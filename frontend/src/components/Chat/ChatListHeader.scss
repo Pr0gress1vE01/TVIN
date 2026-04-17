@@ -1,0 +1,34 @@
+.chat-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+
+  .header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .total-unread-badge {
+      background: #8B5CF6;
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 14px;
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 4px;
+  }
+}

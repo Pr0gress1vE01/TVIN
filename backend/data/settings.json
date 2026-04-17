@@ -1,0 +1,8 @@
+{
+  "registrationEnabled": true,
+  "maintenanceMode": false,
+  "maxFileSize": 50,
+  "defaultUserRole": "user",
+  "siteName": "TVIN Messenger",
+  "allowGuestAccess": false
+}

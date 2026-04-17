@@ -1,0 +1,43 @@
+.profile-tabs {
+  display: flex;
+  border-top: 0.5px solid #2c2c2e;
+  border-bottom: 0.5px solid #2c2c2e;
+  background: #000;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+
+  .tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 0;
+    background: transparent;
+    border: none;
+    color: #aaa;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    border-bottom: 2px solid transparent;
+
+    svg {
+      font-size: 18px;
+    }
+
+    &:hover {
+      color: #fff;
+    }
+
+    &.active {
+      color: #fff;
+      border-bottom-color: #2c7df7;
+
+      svg {
+        color: #2c7df7;
+      }
+    }
+  }
+}

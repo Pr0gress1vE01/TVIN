@@ -1,0 +1,238 @@
+.profile-header {
+  padding: 16px;
+  padding-top: 60px;
+
+  .avatar-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    .avatar-wrapper {
+      position: relative;
+
+      .story-ring {
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        width: 108px;
+        height: 108px;
+        border-radius: 50%;
+        background: conic-gradient(#f09433, #d62976, #962fbf, #4c5fd7, #f09433);
+        opacity: 0.8;
+      }
+
+      .avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #222;
+      }
+
+      .change-avatar-btn {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #2c2c2e;
+        border: 2px solid #000;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 16px;
+
+        &:hover {
+          background: #3a3a3c;
+        }
+      }
+    }
+
+    .header-stats {
+      display: flex;
+      gap: 24px;
+
+      .stat-item {
+        text-align: center;
+        cursor: pointer;
+
+        &.clickable:hover .stat-label {
+          color: #2c7df7;
+        }
+
+        .stat-value {
+          display: block;
+          font-size: 18px;
+          font-weight: 700;
+          color: #fff;
+        }
+
+        .stat-label {
+          font-size: 12px;
+          color: #aaa;
+        }
+      }
+    }
+  }
+
+  .name-section {
+    margin-bottom: 12px;
+
+    .display-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      .verified-icon {
+        color: #1da1f2;
+        font-size: 18px;
+      }
+    }
+
+    .username {
+      color: #aaa;
+      font-size: 14px;
+    }
+  }
+
+  .music-status {
+    background: #1c1c1e;
+    border-radius: 30px;
+    padding: 10px 14px;
+    margin: 12px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #2dd4bf;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover {
+      background: #2c2c2e;
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 8px;
+    margin: 16px 0;
+
+    .btn-primary, .btn-secondary {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-primary {
+      background: #2c7df7;
+      color: white;
+
+      &:hover {
+        background: #1a6ad4;
+      }
+    }
+
+    .btn-secondary {
+      background: #2c2c2e;
+      color: #fff;
+
+      &:hover {
+        background: #3a3a3c;
+      }
+    }
+  }
+
+  .bio-section {
+    margin: 12px 0;
+    line-height: 1.5;
+
+    .bio-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .bio-text {
+      color: #fff;
+      font-size: 14px;
+      margin: 8px 0;
+    }
+
+    .bio-link {
+      color: #2c7df7;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .featured-link {
+    background: #1c1c1e;
+    border-radius: 12px;
+    padding: 14px;
+    text-align: center;
+    margin: 12px 0;
+    font-weight: 500;
+    color: #2c7df7;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover {
+      background: #2c2c2e;
+    }
+  }
+
+  .live-activity {
+    background: #1c1c1e;
+    padding: 12px 16px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #aaa;
+
+    .online-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #666;
+
+      &.online {
+        background: #2dd4bf;
+        box-shadow: 0 0 8px #2dd4bf;
+      }
+    }
+
+    .activity-detail {
+      margin-left: auto;
+      color: #2c7df7;
+    }
+  }
+}

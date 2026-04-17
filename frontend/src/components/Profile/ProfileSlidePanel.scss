@@ -1,0 +1,48 @@
+.profile-slide-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent; // Без затемнения
+  pointer-events: none; // Клики проходят сквозь overlay
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+
+  .profile-slide-panel {
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    background: var(--bg-primary);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    pointer-events: auto; // Панель принимает клики
+    border-left: 1px solid var(--border-color);
+  }
+}
+
+// Сужение основного контента при открытом профиле
+.layout {
+  transition: margin-right 0.3s ease;
+  
+  &.profile-open {
+    margin-right: 400px;
+    
+    @media (max-width: 900px) {
+      margin-right: 0;
+    }
+  }
+}
+
+// Адаптивность
+@media (max-width: 900px) {
+  .layout.profile-open {
+    margin-right: 0;
+  }
+  
+  .profile-slide-panel {
+    max-width: 100% !important;
+  }
+}

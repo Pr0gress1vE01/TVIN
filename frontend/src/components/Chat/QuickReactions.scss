@@ -1,0 +1,29 @@
+.quick-reactions-panel {
+  position: absolute;
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+
+  .reaction-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+
+    &:hover {
+      background: var(--bg-tertiary);
+    }
+  }
+}

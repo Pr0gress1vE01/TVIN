@@ -1,0 +1,801 @@
+// ============================================
+// MESSAGE LIST - MAIN CONTAINER
+// ============================================
+
+.message-list {
+  height: 100%;
+  width: 100%;
+  padding: 12px 0;
+  overflow-y: auto;
+
+  .virtuoso {
+    scroll-behavior: smooth;
+  }
+}
+
+// ============================================
+// MESSAGE ITEM
+// ============================================
+
+.message {
+  display: flex;
+  gap: 8px;
+  padding: 4px 16px;
+  position: relative;
+  max-width: 75%;
+  transition: background-color 0.3s ease;
+
+  // Выравнивание сообщений
+  &:not(.message--own) {
+    margin-right: auto;
+  }
+
+  &.message--own {
+    margin-left: auto;
+    flex-direction: row-reverse;
+  }
+
+  // Компактный режим
+  &.message--compact {
+    padding: 4px 120px;
+  }
+
+  // Подсветка при переходе
+  &.highlighted {
+    animation: highlightPulse 2s ease-out;
+  }
+
+  // ============================================
+  // AVATAR (только для групп)
+  // ============================================
+  
+  &__avatar {
+    display: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  &.message--group {
+    .message__avatar {
+      display: block;
+    }
+
+    &.message--own .message__avatar {
+      display: none;
+    }
+  }
+
+  // ============================================
+  // CONTENT
+  // ============================================
+  
+  &__content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // ============================================
+  // NAME (только для групп)
+  // ============================================
+  
+  &__name {
+    display: none;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-bottom: 4px;
+    padding-left: 8px;
+  }
+
+  &.message--group {
+    .message__name {
+      display: block;
+    }
+  }
+
+  // ============================================
+  // REPLY BLOCK
+  // ============================================
+  
+  &__reply {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    margin-bottom: 6px;
+    background: rgba(0, 0, 0, 0.05);
+    border-left: 3px solid var(--primary-color);
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    min-width: 150px;
+    transition: background 0.15s;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    svg {
+      flex-shrink: 0;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &.message--own .message__reply {
+    background: rgba(255, 255, 255, 0.1);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  // ============================================
+  // BUBBLE - BASE STYLES
+  // ============================================
+  
+  &__bubble {
+    background: var(--bg-message-other);
+    padding: 10px 14px;
+    border-radius: 16px;
+    position: relative;
+    word-wrap: break-word;
+    min-width: 80px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.15s;
+
+    .message--own & {
+      background: var(--bg-message-own);
+      color: white;
+    }
+
+    // ============================================
+    // TEXT MESSAGE
+    // ============================================
+    
+    .message__text {
+      font-size: 15px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    // ============================================
+    // IMAGE MESSAGE
+    // ============================================
+    
+    &--image {
+      padding: 4px;
+      min-width: 100px;
+      min-height: 50px;
+      
+      img {
+        max-width: 320px;
+        max-height: 320px;
+        min-width: 150px;
+        min-height: 75px;
+        border-radius: 12px;
+        display: block;
+        cursor: pointer;
+        object-fit: cover;
+        transition: transform 0.15s;
+
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+    }
+
+    // ============================================
+    // VIDEO MESSAGE
+    // ============================================
+    
+    &--video {
+      padding: 4px;
+      min-width: 200px;
+      min-height: 150px;
+      
+      video {
+        max-width: 320px;
+        max-height: 320px;
+        min-width: 200px;
+        min-height: 150px;
+        border-radius: 12px;
+        display: block;
+      }
+    }
+
+    // ============================================
+    // VOICE MESSAGE
+    // ============================================
+    
+    &--voice {
+      min-width: 240px;
+      padding: 8px 12px;
+    }
+
+    // ============================================
+    // VIDEO MESSAGE (CIRCLE)
+    // ============================================
+    
+    &--video-message {
+      padding: 4px;
+      min-width: 200px;
+      min-height: 200px;
+      background: transparent !important;
+    }
+
+    // ============================================
+    // STICKER MESSAGE
+    // ============================================
+    
+    &--sticker {
+      background: transparent !important;
+      padding: 0 !important;
+      min-width: auto !important;
+      min-height: auto !important;
+      box-shadow: none !important;
+      
+      .sticker-image {
+        width: 128px;
+        height: 128px;
+        object-fit: contain;
+      }
+    }
+
+    // ============================================
+    // FILE MESSAGE
+    // ============================================
+    
+    &--file {
+      min-width: 200px;
+      
+      a {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        color: var(--primary-color);
+        text-decoration: none;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+        
+        .file-size {
+          font-size: 11px;
+          color: var(--text-tertiary);
+        }
+      }
+
+      .message--own & a {
+        color: white;
+      }
+    }
+
+    // ============================================
+    // MESSAGE META (TIME & STATUS)
+    // ============================================
+    
+    .message__meta {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .message__time {
+      font-size: 11px;
+      opacity: 0.7;
+      line-height: 1;
+    }
+
+    .message__status {
+      display: flex;
+      align-items: center;
+      
+      svg {
+        font-size: 14px;
+      }
+    }
+
+    .message__edited {
+      font-size: 11px;
+      opacity: 0.7;
+      margin-left: 4px;
+      
+      &::before {
+        content: 'изм.';
+      }
+    }
+  }
+
+  // ============================================
+  // REACTIONS
+  // ============================================
+  
+  .message-reactions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
+
+    .reaction-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+      &:hover {
+        background: var(--bg-tertiary);
+        transform: scale(1.02);
+      }
+
+      &.active {
+        background: rgba(0, 136, 204, 0.15);
+        border-color: var(--primary-color);
+        
+        .reaction-count {
+          color: var(--primary-color);
+        }
+      }
+
+      .reaction-emoji {
+        font-size: 14px;
+        line-height: 1;
+      }
+
+      .reaction-count {
+        font-size: 11px;
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// ============================================
+// MESSAGE OBSERVER (для бесконечной загрузки)
+// ============================================
+
+.message-observer {
+  height: 1px;
+  width: 100%;
+}
+
+// ============================================
+// MESSAGES START / END
+// ============================================
+
+.messages-start {
+  text-align: center;
+  padding: 20px;
+  
+  span {
+    background: var(--bg-tertiary);
+    color: var(--text-tertiary);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+.messages-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  color: var(--text-tertiary);
+  font-size: 13px;
+
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+.messages-footer {
+  height: 8px;
+}
+
+// ============================================
+// CONTEXT MENU
+// ============================================
+
+.message-context-menu {
+  position: fixed;
+  background: #1a1a2e;
+  border: 1px solid #2a2a4e;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  min-width: 220px;
+  z-index: 1000;
+
+  button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: transparent;
+    border: none;
+    color: #e0e0e0;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.15s;
+    text-align: left;
+
+    svg {
+      font-size: 18px;
+      opacity: 0.8;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      background: #2a2a4e;
+    }
+
+    &.danger {
+      color: #ff6b6b;
+      
+      &:hover {
+        background: rgba(255, 107, 107, 0.15);
+      }
+    }
+  }
+
+  .menu-divider {
+    height: 1px;
+    background: #2a2a4e;
+    margin: 6px 0;
+  }
+}
+
+// ============================================
+// REACTIONS PANEL (над меню)
+// ============================================
+
+.reactions-panel {
+  position: fixed;
+  display: flex;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #1a1a2e;
+  border: 1px solid #2a2a4e;
+  border-radius: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+
+  .reaction-panel-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+
+    &:hover {
+      background: #2a2a4e;
+      transform: scale(1.15);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+// ============================================
+// ANIMATIONS
+// ============================================
+
+@keyframes highlightPulse {
+  0% {
+    background-color: rgba(0, 136, 204, 0.3);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+
+@media (max-width: 768px) {
+  .message {
+    max-width: 90%;
+    padding: 4px 8px;
+
+    &__bubble {
+      &--image img,
+      &--video video {
+        max-width: 250px;
+        max-height: 250px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .message {
+    max-width: 95%;
+    padding: 4px 4px;
+
+    &__bubble {
+      min-width: 120px;
+      padding: 8px 10px;
+
+      &--image img,
+      &--video video {
+        max-width: 200px;
+        max-height: 200px;
+        min-width: 120px;
+      }
+
+      &--voice {
+        min-width: 200px;
+      }
+    }
+  }
+}
+
+// ============================================
+// MEDIA MESSAGES - РЕАКЦИИ В META
+// ============================================
+
+.media-message-wrapper {
+  position: relative;
+  
+  .media-container {
+    position: relative;
+    display: inline-block;
+    
+    img, video {
+      max-width: 300px !important;
+      max-height: 300px !important;
+      width: auto !important;
+      height: auto !important;
+      border-radius: 16px !important;
+      display: block !important;
+      object-fit: contain !important;
+    }
+  }
+  
+  .media-meta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+    
+    .message__time {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      padding: 2px 6px;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+      border-radius: 20px;
+    }
+    
+    .message__status {
+      display: flex;
+      align-items: center;
+      
+      svg {
+        font-size: 14px;
+        color: var(--text-tertiary);
+      }
+    }
+  }
+}
+
+.message--own .media-message-wrapper .media-meta {
+  justify-content: flex-start;
+}
+
+// ============================================
+// REACTIONS - ВНУТРИ MEDIA-META И BUBBLE
+// ============================================
+
+.message-reactions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+
+  .reaction-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 7px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+
+    &:hover {
+      background: rgba(139, 92, 246, 0.3);
+      border-color: var(--primary);
+      transform: scale(1.02);
+    }
+
+    .reaction-emoji {
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .reaction-count {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 500;
+    }
+  }
+}
+
+// Для текстовых сообщений - реакции внутри пузырька
+.message__bubble {
+  .message-reactions {
+    margin-top: 6px;
+    
+    .reaction-badge {
+      background: rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--border-color);
+      
+      &:hover {
+        background: var(--bg-tertiary);
+      }
+    }
+  }
+  
+  .message--own & .message-reactions .reaction-badge {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+  }
+}
+
+.message-reactions {
+  .reaction-badge {
+    &.active {
+      background: rgba(139, 92, 246, 0.3) !important;
+      border-color: var(--primary) !important;
+      
+      .reaction-count {
+        color: var(--primary) !important;
+      }
+    }
+  }
+}
+
+.media-grid {
+  display: grid;
+  gap: 2px;
+  max-width: 400px;
+  border-radius: 16px;
+  overflow: hidden;
+
+  &--1 {
+    grid-template-columns: 1fr;
+    .media-grid-item img { max-height: 300px; }
+  }
+
+  &--2 {
+    grid-template-columns: 1fr 1fr;
+    .media-grid-item img { aspect-ratio: 1; height: 150px; }
+  }
+
+  &--3 {
+    grid-template-columns: 1fr 1fr;
+    .media-grid-item:first-child { grid-column: span 2; img { height: 150px; } }
+    .media-grid-item:not(:first-child) img { height: 150px; }
+  }
+
+  &--4 {
+    grid-template-columns: 1fr 1fr;
+    img { height: 150px; }
+  }
+
+  .media-grid-item {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.2s;
+      
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    .more-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      span {
+        font-size: 24px;
+        font-weight: 600;
+        color: white;
+      }
+    }
+  }
+}
+
+.message__bubble--file {
+  .multiple-files {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    > span {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    
+    .file-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 4px 0;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+

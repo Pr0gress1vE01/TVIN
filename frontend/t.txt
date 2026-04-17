@@ -1,0 +1,292 @@
+// ============================================
+// MESSAGE LIST - MAIN CONTAINER
+// ============================================
+
+.message-list {
+  height: 100%;
+  width: 100%;
+  padding: 12px 0;
+  overflow-y: auto;
+}
+
+// ============================================
+// MESSAGE ITEM - С ОТСТУПАМИ ПО БОКАМ
+// ============================================
+
+.message {
+  display: flex;
+  gap: 8px;
+  padding: 4px 32px; // Большие отступы по бокам для центрирования
+  position: relative;
+  max-width: 75%;
+
+  &:not(.message--own) {
+    margin-right: auto;
+  }
+
+  &.message--own {
+    margin-left: auto;
+    flex-direction: row-reverse;
+  }
+
+  // Компактный режим - меньше отступов
+  &.message--compact {
+    padding: 2px 16px;
+  }
+
+  &__avatar {
+    display: none;
+  }
+
+  &__content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    display: none;
+  }
+
+  &__reply {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    margin-bottom: 6px;
+    background: rgba(0, 0, 0, 0.05);
+    border-left: 3px solid var(--primary);
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+
+    .message--own & {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  // ============================================
+  // TEXT BUBBLE - С ФОНОМ
+  // ============================================
+  
+  &__bubble {
+    background: var(--bg-message-other);
+    padding: 10px 14px;
+    border-radius: var(--message-border-radius, 16px);
+    word-wrap: break-word;
+    min-width: 150px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+    .message--own & {
+      background: var(--bg-message-own);
+      color: white;
+    }
+
+    .message__text {
+      font-size: var(--message-font-size, 15px);
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .message__meta {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .message__time {
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    .message__status {
+      display: flex;
+      align-items: center;
+      
+      svg {
+        font-size: 14px;
+      }
+    }
+
+    .message__edited {
+      font-size: 11px;
+      opacity: 0.7;
+      margin-left: 4px;
+      
+      &::before {
+        content: 'изм.';
+      }
+    }
+  }
+}
+
+// ============================================
+// MEDIA MESSAGES - БЕЗ ФОНА, С ОТСТУПАМИ
+// ============================================
+
+.media-message-wrapper {
+  position: relative;
+  
+  .media-container {
+    position: relative;
+    display: inline-block;
+    
+    img, video {
+      max-width: 300px !important;
+      max-height: 300px !important;
+      width: auto !important;
+      height: auto !important;
+      border-radius: 16px !important;
+      display: block !important;
+      object-fit: contain !important;
+    }
+  }
+  
+  .media-meta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    margin-top: 4px;
+    
+    .message__time {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      padding: 2px 6px;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+      border-radius: 20px;
+    }
+    
+    .message__status {
+      display: flex;
+      align-items: center;
+      
+      svg {
+        font-size: 14px;
+        color: var(--text-tertiary);
+      }
+    }
+  }
+}
+
+.message--own .media-message-wrapper .media-meta {
+  justify-content: flex-start;
+}
+
+// ============================================
+// VOICE MESSAGE - СПЕЦИАЛЬНЫЕ ОТСТУПЫ
+// ============================================
+
+.message__bubble--voice {
+  padding-left: 16px !important;
+}
+
+// ============================================
+// REACTIONS
+// ============================================
+
+.message-reactions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+
+  .reaction-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+
+    &:hover {
+      background: var(--bg-tertiary);
+    }
+
+    &.active {
+      background: rgba(139, 92, 246, 0.15);
+      border-color: var(--primary);
+    }
+
+    .reaction-emoji {
+      font-size: 14px;
+    }
+
+    .reaction-count {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+  }
+}
+
+// ============================================
+// MESSAGE OBSERVER
+// ============================================
+
+.message-observer {
+  height: 1px;
+  width: 100%;
+}
+
+// ============================================
+// MESSAGES START
+// ============================================
+
+.messages-start {
+  text-align: center;
+  padding: 20px;
+  
+  span {
+    background: var(--bg-tertiary);
+    color: var(--text-tertiary);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+
+@media (max-width: 768px) {
+  .message {
+    max-width: 85%;
+    padding: 4px 16px;
+    
+    &.message--compact {
+      padding: 2px 8px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .message {
+    max-width: 95%;
+    padding: 4px 8px;
+    
+    &.message--compact {
+      padding: 2px 4px;
+    }
+    
+    &__bubble {
+      min-width: 120px;
+      padding: 8px 10px;
+    }
+  }
+  
+  .media-message-wrapper .media-container {
+    img, video {
+      max-width: 250px !important;
+      max-height: 250px !important;
+    }
+  }
+}

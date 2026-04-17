@@ -1,0 +1,125 @@
+.voice-message {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 2px;
+  margin: 3px 0;
+  min-width: 240px;
+
+ .voice-play-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    color: #8B5CF6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    svg {
+      font-size: 18px;
+      margin-left: 2px;
+    }
+
+    &:hover:not(:disabled) {
+      transform: scale(1.05);
+    }
+
+    &:active:not(:disabled) {
+      transform: scale(0.95);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .voice-waveform-wrapper {
+    flex: 1;
+    min-width: 140px;
+    height: 40px;
+    position: relative;
+    cursor: pointer;
+
+    .voice-waveform-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(139, 92, 246, 0.2);
+      border-radius: 20px;
+      overflow: hidden;
+
+      .voice-waveform-progress {
+        height: 100%;
+        width: 0%;
+        background: #8B5CF6;
+        border-radius: 20px;
+        transition: width 0.1s linear;
+      }
+    }
+
+    .voice-waveform-bars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      padding: 0 12px;
+
+      .wave-bar {
+        width: 3px;
+        background: rgba(175, 175, 175, 0.644);
+        border-radius: 2px;
+        transition: height 0.2s;
+      }
+    }
+  }
+
+  .voice-time {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    flex-shrink: 0;
+    min-width: 48px;
+    text-align: left;
+  }
+
+  &.own {
+    .voice-play-btn {
+      background: white;
+      color: #8B5CF6;
+    }
+    
+    .voice-waveform-wrapper .voice-waveform-bg {
+      background: rgba(255, 255, 255, 0.2);
+      
+      .voice-waveform-progress {
+        background: white;
+      }
+    }
+    
+    .voice-time {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  &.error {
+    .voice-waveform-wrapper.error-message {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-tertiary);
+      font-size: 13px;
+    }
+  }
+}

@@ -1,0 +1,86 @@
+.profile-files {
+  padding: 12px;
+
+  .files-list {
+    .file-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 0.5px solid #2c2c2e;
+
+      .file-info {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex: 1;
+
+        .file-icon {
+          font-size: 28px;
+        }
+
+        .file-details {
+          .file-name {
+            display: block;
+            color: #fff;
+            font-weight: 500;
+            margin-bottom: 4px;
+          }
+
+          .file-meta {
+            display: block;
+            color: #666;
+            font-size: 12px;
+          }
+        }
+      }
+
+      .file-actions {
+        display: flex;
+        gap: 8px;
+
+        .file-btn {
+          width: 36px;
+          height: 36px;
+          border-radius: 8px;
+          background: #1c1c1e;
+          border: none;
+          color: #aaa;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.15s;
+
+          &:hover {
+            background: #2c2c2e;
+            color: #2c7df7;
+          }
+        }
+      }
+    }
+  }
+}
+
+.files-loading {
+  padding: 12px;
+
+  .skeleton-file {
+    height: 64px;
+    background: #1c1c1e;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    animation: pulse 1.5s infinite;
+  }
+}
+
+.empty-files {
+  text-align: center;
+  padding: 60px 20px;
+  color: #aaa;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

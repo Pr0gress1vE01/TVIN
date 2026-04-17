@@ -1,0 +1,47 @@
+.chat-context-menu {
+  position: fixed;
+  background: #1a1a2e;
+  border: 1px solid #2a2a4e;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  min-width: 220px;
+  z-index: 1000;
+
+  button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    color: #e0e0e0;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.15s;
+    text-align: left;
+
+    svg {
+      font-size: 18px;
+      opacity: 0.8;
+    }
+
+    &:hover {
+      background: #2a2a4e;
+    }
+
+    &.danger {
+      color: #ff6b6b;
+      
+      svg {
+        color: #ff6b6b;
+      }
+
+      &:hover {
+        background: rgba(255, 107, 107, 0.15);
+      }
+    }
+  }
+}

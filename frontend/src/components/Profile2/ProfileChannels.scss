@@ -1,0 +1,27 @@
+.profile-channels-card {
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid var(--border-color);
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 15px;
+
+    svg {
+      font-size: 18px;
+      color: var(--primary-color);
+    }
+
+    .count {
+      margin-left: auto;
+      color: var(--text-tertiary);
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+}

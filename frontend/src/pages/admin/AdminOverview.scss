@@ -1,0 +1,115 @@
+.admin-overview {
+  h1 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .welcome-text {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .admin-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .recent-users {
+    .recent-user-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border-color);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .user-info {
+        flex: 1;
+
+        .name {
+          display: block;
+          color: var(--text-primary);
+          font-weight: 500;
+        }
+
+        .date {
+          display: block;
+          color: var(--text-tertiary);
+          font-size: 0.75rem;
+        }
+      }
+    }
+  }
+
+  .messages-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+    height: 200px;
+    padding: 1rem 0;
+
+    .chart-bar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+
+      .bar-fill {
+        width: 100%;
+        background: linear-gradient(to top, var(--primary-color), var(--primary-light));
+        border-radius: 0.25rem 0.25rem 0 0;
+        min-height: 2px;
+        transition: height 0.3s ease;
+      }
+
+      .bar-label {
+        margin-top: 0.5rem;
+        font-size: 0.75rem;
+        color: var(--text-tertiary);
+      }
+    }
+  }
+
+  .roles-distribution {
+    .role-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.875rem 0;
+      border-bottom: 1px solid var(--border-color);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .role-label {
+        color: var(--text-secondary);
+        font-size: 0.9375rem;
+      }
+
+      .role-value {
+        color: var(--text-primary);
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

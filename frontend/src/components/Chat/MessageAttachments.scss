@@ -1,0 +1,121 @@
+.media-container {
+  position: relative;
+  display: inline-block;
+  
+  img, video {
+    max-width: 300px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    border-radius: 16px;
+    display: block;
+    object-fit: cover;
+    cursor: pointer;
+  }
+}
+
+.media-grid {
+  display: grid;
+  gap: 2px;
+  max-width: 400px;
+  border-radius: 16px;
+  overflow: hidden;
+
+  &--1 {
+    grid-template-columns: 1fr;
+    .media-grid-item img { max-height: 300px; }
+  }
+
+  &--2 {
+    grid-template-columns: 1fr 1fr;
+    .media-grid-item img { aspect-ratio: 1; height: 150px; }
+  }
+
+  &--3 {
+    grid-template-columns: 1fr 1fr;
+    .media-grid-item:first-child { 
+      grid-column: span 2; 
+      img { height: 150px; }
+    }
+    .media-grid-item:not(:first-child) img { height: 150px; }
+  }
+
+  &--4 {
+    grid-template-columns: 1fr 1fr;
+    img { height: 150px; }
+  }
+
+  .media-grid-item {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.2s;
+      
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    .more-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      span {
+        font-size: 24px;
+        font-weight: 600;
+        color: white;
+      }
+    }
+  }
+}
+
+.message__bubble--file {
+  .multiple-files {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    > span {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    
+    .file-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 4px 0;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+    
+    .file-size {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      margin-left: 6px;
+    }
+  }
+}

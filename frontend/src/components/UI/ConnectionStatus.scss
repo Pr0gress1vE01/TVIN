@@ -1,0 +1,66 @@
+.connection-status {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 9999;
+  font-size: 13px;
+  font-weight: 500;
+  animation: slideDown 0.3s ease;
+
+  &.connecting {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+    color: white;
+  }
+
+  &.connected {
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: white;
+  }
+
+  &.disconnected {
+    background: linear-gradient(135deg, #EF4444, #DC2626);
+    color: white;
+  }
+
+  .pulse {
+    animation: pulse 1.5s infinite;
+  }
+
+  .latency {
+    margin-left: 8px;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    font-size: 11px;
+  }
+
+  button {
+    margin-left: 10px;
+    padding: 4px 12px;
+    background: white;
+    border: none;
+    border-radius: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

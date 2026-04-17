@@ -1,0 +1,65 @@
+.message-reactions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+
+  .reaction-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 7px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+
+    &:hover {
+      background: rgba(139, 92, 246, 0.3);
+      border-color: var(--primary);
+      transform: scale(1.02);
+    }
+
+    &.active {
+      background: rgba(139, 92, 246, 0.4);
+      border-color: var(--primary);
+    }
+
+    .reaction-emoji {
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .reaction-count {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 500;
+    }
+  }
+}
+
+.message__bubble .message-reactions {
+  margin-top: 6px;
+  
+  .reaction-badge {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    
+    &:hover {
+      background: var(--bg-tertiary);
+    }
+  }
+}
+
+.message--own .message__bubble .message-reactions .reaction-badge {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}

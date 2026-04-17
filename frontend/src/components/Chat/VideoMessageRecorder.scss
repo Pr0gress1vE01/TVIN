@@ -1,0 +1,137 @@
+.video-recorder-compact {
+  background: var(--bg-secondary);
+  border-radius: 1rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  width: 200px;
+
+  .camera-preview-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+
+    .camera-preview {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      
+      &.recording {
+        border: 2px solid var(--danger-color);
+      }
+    }
+
+    .recording-badge {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.5rem;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      border-radius: 1rem;
+      color: white;
+      font-size: 0.75rem;
+
+      .pulse {
+        width: 6px;
+        height: 6px;
+        background: var(--danger-color);
+        border-radius: 50%;
+        animation: pulse 1s infinite;
+      }
+    }
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+
+    button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .flip-btn, .cancel-btn {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .record-btn {
+      background: var(--danger-color);
+      border: none;
+      color: white;
+
+      svg {
+        font-size: 1.25rem;
+      }
+    }
+
+    .stop-btn {
+      background: var(--danger-color);
+      border: none;
+      
+      .stop-icon {
+        width: 16px;
+        height: 16px;
+        background: white;
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .preview-controls {
+    .video-preview {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 0.75rem;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+
+      button {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+
+      .retake-btn {
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+      }
+
+      .send-btn {
+        background: var(--success-color);
+        border: none;
+        color: white;
+
+        &:disabled {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}

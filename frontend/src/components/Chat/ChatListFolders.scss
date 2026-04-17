@@ -1,0 +1,52 @@
+.chat-list-folders {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px 12px;
+  border-bottom: 1px solid var(--border-color);
+
+  .folder-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+
+    svg {
+      font-size: 16px;
+    }
+
+    &:hover {
+      background: var(--border-color);
+      color: var(--text-primary);
+    }
+
+    &.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+
+      svg {
+        color: white;
+      }
+    }
+
+    .folder-badge {
+      background: rgba(255, 255, 255, 0.25);
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-size: 11px;
+      margin-left: 4px;
+    }
+  }
+
+  .add-folder {
+    padding: 8px 12px;
+  }
+}

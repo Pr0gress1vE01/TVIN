@@ -1,0 +1,132 @@
+.profile-music {
+  padding: 12px;
+
+  .music-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .track-count {
+      color: #aaa;
+      font-size: 14px;
+    }
+  }
+
+  .tracks-list {
+    .track-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 0.5px solid #2c2c2e;
+
+      .track-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: 1;
+
+        .track-index {
+          width: 24px;
+          color: #666;
+          font-size: 14px;
+        }
+
+        .track-cover {
+          width: 44px;
+          height: 44px;
+          background: #1c1c1e;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #2c7df7;
+          font-size: 20px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+          }
+        }
+
+        .track-details {
+          .track-title {
+            display: block;
+            color: #fff;
+            font-weight: 500;
+            margin-bottom: 2px;
+          }
+
+          .track-artist {
+            display: block;
+            color: #aaa;
+            font-size: 13px;
+          }
+        }
+      }
+
+      .track-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        .track-duration {
+          color: #666;
+          font-size: 13px;
+        }
+
+        .add-track-btn {
+          background: transparent;
+          border: none;
+          color: #aaa;
+          font-size: 20px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.15s;
+
+          &:hover:not(:disabled) {
+            color: #2c7df7;
+          }
+
+          &:disabled {
+            cursor: default;
+          }
+        }
+      }
+    }
+  }
+}
+
+.music-loading {
+  padding: 12px;
+
+  .skeleton-track {
+    height: 68px;
+    background: #1c1c1e;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    animation: pulse 1.5s infinite;
+  }
+}
+
+.empty-music {
+  text-align: center;
+  padding: 60px 20px;
+  color: #aaa;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
